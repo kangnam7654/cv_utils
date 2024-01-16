@@ -3,13 +3,6 @@ from pathlib import Path
 import cv2
 
 
-def temp_paths():
-    directory = "/home/kangnam/hdd/datasets/metaworld/"
-    video_file = directory + "videos/louisvuitton.mp4"
-    output_dir = directory + "images/louisvuitton"
-    return video_file, output_dir
-
-
 def video_to_frames(
     video_file, output_dir, prefix=None, ext="png", interval=1, seconds=True
 ):
@@ -31,7 +24,7 @@ def video_to_frames(
     last_stem = ""
 
     if isinstance(video_file, list):
-        pass  # Do nothing
+        pass  # Do Nothing
     else:
         video_file = list(video_file)
 
@@ -62,7 +55,6 @@ def video_to_frames(
 
             if success:
                 if frame_count % interval_ == 0:
-                    
                     # ========= File Naming =======
                     if prefix is None:
                         output_file = os.path.join(out_dir, f"{naming_count:06d}.{ext}")
@@ -70,7 +62,7 @@ def video_to_frames(
                         output_file = os.path.join(
                             out_dir, f"{prefix}_{naming_count:06d}.{ext}"
                         )
-                    cv2.imwrite(output_file, frame) # 이미지 파일로 저장
+                    cv2.imwrite(output_file, frame)  # 이미지 파일로 저장
                     print(f"Saved: {output_file}")
 
                     current_stem = os.path.split(out_dir)[-1]
